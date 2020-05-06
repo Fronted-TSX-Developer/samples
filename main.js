@@ -15,16 +15,16 @@ if (top !== self) {
   if (!top._finished) {
     top.LOADING.init()
     console.log('--- wait for types fetching... ---')
+    const info = m => `<span style="background:lightskyblue">${m}</span>`
     const types = __VAR_JSON__.types
     const names = Object.keys(types)
     const count = names.length
     let index = 0
-    Promise
-      .all(names.map(name =>
-        top.api_addModuleDeclaration(types[name], name)
-          .then(() => console.log(`type(${++index}/${count}): [${name}] fetched.`))))
+    Promise.all(names.map(name => top.api_addModuleDeclaration(types[name], name)
+      .then(() =>
+        console.log(`type(${++index}/${count}): ${info(`[${name}]`)} fetched`))))
       .then(() => {
-        console.log('--- types fetching finished. ---')
+        console.log(`--- types fetching finished. ---`)
         top.LOADING.destroy()
       })
     top._finished = true

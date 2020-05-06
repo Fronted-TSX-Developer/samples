@@ -14,14 +14,17 @@ requirejs.load = function (context, id, url) {
 if (top !== self) {
   if (!top._finished) {
     top.LOADING.init()
-    console.log('wait for types fetching...')
+    console.log('--- wait for types fetching... ---')
     const types = __VAR_JSON__.types
+    const names = Object.keys(types)
+    const count = names.length
+    let index = 0
     Promise
-      .all(Object
-        .keys(types)
-        .map(name => top.api_addModuleDeclaration(types[name], name)))
+      .all(names.map(name =>
+        top.api_addModuleDeclaration(types[name], name)
+          .then(() => console.log(`type(${++index}/${count}): [${name}] fetched.`))))
       .then(() => {
-        console.log('types inited.')
+        console.log('--- types fetching finished. ---')
         top.LOADING.destroy()
       })
     top._finished = true

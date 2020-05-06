@@ -10,7 +10,7 @@ requirejs.load = function (context, id, url) {
 
 // 2. declarations config
 // please remove it before sandbox exports.
-// api docs:https://github.com/Saber2pr/editor/blob/master/doc/script.md
+// api docs:https://github.com/Fronted-TSX-Developer/tsx-editor/blob/master/docs/script.md
 if (top !== self) {
   if (!top._finished) {
     top.LOADING.init()

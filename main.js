@@ -10,10 +10,11 @@ requirejs.load = function (context, id, url) {
 
 // 2. declarations config
 // please remove it before sandbox exports.
-// api docs:https://github.com/Fronted-TSX-Developer/tsx-editor/blob/master/docs/script.md
+// api docs:https://github.com/Saber2pr/editor/blob/master/docs/script.md
 if (top !== self) {
   if (!top._finished) {
     top.LOADING.init()
+    console.log(`[<span style="color:blue;">Typescript Version:${top.monaco.languages.typescript.typescriptVersion}</span>]`)
     console.log('--- wait for types fetching... ---')
     const info = m => `<span style="background:lightskyblue">${m}</span>`
     const types = __VAR_JSON__.types

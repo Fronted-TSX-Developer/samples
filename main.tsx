@@ -18,11 +18,10 @@ const App = ({ github }: App) => {
 
   return <div>
     <div className="title">
-      <i>TSX Editor</i>
+      <i>Code SandBox</i>
     </div>
     <p style={{ color: 'grey' }}>Fork on Github:
-    <br />
-      <a href={github} target="_blank">Fronted-TSX-Developer/tsx-editor</a>
+        <a href={github} target="_blank">Saber2pr/editor</a>
     </p>
     <div>
       click to add: {state}
@@ -33,5 +32,5 @@ const App = ({ github }: App) => {
   </div>
 }
 
-ReactDOM.render(<App github="https://github.com/Fronted-TSX-Developer/tsx-editor" />,
+ReactDOM.render(<App github="https://github.com/Saber2pr/editor" />,
   document.getElementById('test'))

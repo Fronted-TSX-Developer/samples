@@ -1,5 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
+import React, { useState, useEffect, useRef } from 'react'
+const mountNode = document.getElementById('root')
+
 import { message } from 'antd'
 
 import axios from 'axios'
@@ -13,9 +15,16 @@ const App = ({ github }: App) => {
   const [state, setState] = useState(0)
   const btn = useRef<HTMLButtonElement>()
 
+  const sayHello = () => {
+    message.info(<>
+      Hello~
+      <a target="_blank" href="https://ant.design/components/overview-cn/">Ant Design</a>
+    </>)
+  }
+
   useEffect(() => {
     btn.current.style.animation = 'shake 2s ease infinite'
-    message.info('hello~ antd design')
+    sayHello()
   }, [])
 
   return <div>
@@ -23,13 +32,13 @@ const App = ({ github }: App) => {
       <i>Code SandBox</i>
     </div>
     <p style={{ color: 'grey' }}>Fork on Github:
-        <a href={github} target="_blank">Saber2pr/editor</a>
+        <a href={github} target="_blank">Saber2pr/editor {'>>'}</a>
     </p>
     <div>
       click to add: {state}
       <div>
         <button ref={btn} onClick={() => {
-          message.info('hello~ antd design')
+          sayHello()
           setState(state + 1)
         }}>setState(state + 1)</button>
       </div>
@@ -38,4 +47,4 @@ const App = ({ github }: App) => {
 }
 
 ReactDOM.render(<App github="https://github.com/Saber2pr/editor" />,
-  document.getElementById('test'))
+  mountNode)
